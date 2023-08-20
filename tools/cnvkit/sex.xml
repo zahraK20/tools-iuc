@@ -13,7 +13,7 @@
             $male_reference        
     ]]></command>
      <inputs>
-        <param name="input_filename_file" type="data" format="tabular" label="Copy number/ratio files" help="file format *.cnr, *.cnn" />
+        <param name="input_filename_file" type="data" format="tabular" label="Copy number/ratio files" help="file formats of *.cns *.cnr, *.cnn" />
         <param argument="--male-reference" type="boolean" checked="false" truevalue="--male-reference" falsevalue="" label="male reference" help="" />
         </inputs>
     <outputs>

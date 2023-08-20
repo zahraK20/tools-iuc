@@ -32,9 +32,9 @@
             $advanced_settings.bootstrap                   
     ]]></command>
     <inputs>
-        <param name="input_filename_file" type="data" format="tabular" label="Processes sample coverage data file" help="" />
-        <param argument="--segments" optional="true" type="data" format="tabular" label="Segments" help="Segmentation calls cns" />  
-        <param argument="--drop-low-coverage" type="boolean" checked="false" truevalue="--drop-low-coverage" falsevalue="" label="Drop very-low-coverage bins" help="Avoid false-positive deletions" />
+        <param name="input_filename_file" type="data" format="tabular" label="Processes sample coverage data file" help="cnr format of sample coverage" />
+        <param argument="--segments" optional="true" type="data" format="tabular" label="Segments" help="cns format of segmentation calls" />  
+        <param argument="--drop-low-coverage" type="boolean" checked="false" truevalue="--drop-low-coverage" falsevalue="" label="Drop very-low-coverage bins" help="Drop very low coverage to avoid false-positive deletions" />
         <section name="advanced_settings" title="Advanced settings" expanded="false">
             <expand macro="genemetrics_segmetrics_statistics" />
         </section>
@@ -56,7 +56,7 @@
         </test>
     </tests>
     <help><![CDATA[
-        Calculate summary statistics of the residual bin-level log2 ratio estimates from the segment means, similar to 
+        Segmetrics helps to calculate summary statistics of the residual bin-level log2 ratio estimates from the segment means, similar to 
         the existing metrics command, but for each segment individually. Results are output in the same format as the 
         CNVkit segmentation file (.cns), with the stat names and calculated values printed in additional columns.
     ]]></help>

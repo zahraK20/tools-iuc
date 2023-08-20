@@ -48,12 +48,12 @@
             $advanced_settings.bootstrap                  
     ]]></command>
   <inputs>
-      <param name="input_filename_file" type="data" format="tabular" label="Processes sample coverage data file" help="" />
-      <param argument="--segment" optional="true" type="data" format="tabular" label="segmentation calls" value="" help="Otherwise inferred from file names" />  
-      <param argument="--min-probes" optional="true" type="integer" label="Min Number of covered probes" value="3" help="Min Number of covered probes to report a gain/loss " /> 
-      <param argument="--threshold" optional="true" type="float" label="threshold" value="0.2" help="threshold" />  
-      <param argument="--male-reference" type="boolean" checked="false" truevalue="--male-reference" falsevalue="" label="Assume inputs normalised to a male reference" help="otherwise male samples would have -1 chrX" />
-      <param argument="--drop-low-coverage" type="boolean" checked="false" truevalue="--drop-low-coverage" falsevalue="" label="Drop very-low-coverage bins" help="To avoid false-positive deletions in poor-quality tumor samples" />   
+      <param name="input_filename_file" type="data" format="tabular" label="Processes sample coverage data file" help="cnr format and the output of CNVkit fix subcommand" />
+      <param argument="--segment" optional="true" type="data" format="tabular" label="segmentation calls" value="" help="cns format and the output of segment" />  
+      <param argument="--min-probes" optional="true" type="integer" label="Min Number of covered probes" value="3" help="Minimum Number of covered probes to report a gain/loss" /> 
+      <param argument="--threshold" optional="true" type="float" label="threshold" value="0.2" help="pre-defined threshold" />  
+      <param argument="--male-reference" type="boolean" checked="false" truevalue="--male-reference" falsevalue="" label="Assume inputs normalised to a male reference" help="females and males have +1 and -1 log-coverage of chrX respectivel" />
+      <param argument="--drop-low-coverage" type="boolean" checked="false" truevalue="--drop-low-coverage" falsevalue="" label="Drop very-low-coverage bins" help="Drop very low coverage to avoid false-positive deletions in poor-quality samples" />   
       <expand macro="sample_sex_condition" />
       <section name="advanced_settings" title="Advanced settings" expanded="false">
           <expand macro="genemetrics_segmetrics_statistics" />
@@ -75,10 +75,14 @@
         </test>
     </tests>
     <help><![CDATA[
-        Identify targeted genes with copy number gain or loss above or below a threshold.
-        The first four columns of output table show each targeted gene’s name and its 
-        genomic coordinates (based on the first and last bins with that label in the 
-        original target BED file, and thus the .cnr file).
+        Genemetics helps to identify targeted genes with copy number gain or loss above or below a threshold.
+        This tool has one mandatory input and one optional input. The obligatory input file is the sample coverage with the format of 
+        “cnr” which is the output of CNVkit fix subcommand. The optional input file is segmentation calls with the format of “cns” which 
+        is output of the CNVkit segment subcommand. 
+        The content of this output varies depending on using one input file or two input files. The first four columns of output table 
+        show each targeted gene’s name and its genomic coordinates (based on the first and last bins with that label in the original 
+        target BED file, and thus the .cnr file).
+        
     ]]></help>
     <expand macro="citations" />
 </tool>
